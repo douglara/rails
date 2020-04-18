@@ -26,13 +26,14 @@ class ActiveStorage::Blob < ActiveRecord::Base
   include Analyzable
   include Identifiable
   include Representable
+  include Service
 
   self.table_name = "active_storage_blobs"
 
   has_secure_token :key
   store :metadata, accessors: [ :analyzed, :identified ], coder: ActiveRecord::Coders::JSON
 
-  class_attribute :service, instance_accessor: false
+  class_attribute :service
 
   has_many :attachments
 
