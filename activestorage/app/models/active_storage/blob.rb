@@ -32,7 +32,7 @@ class ActiveStorage::Blob < ActiveRecord::Base
   has_secure_token :key
   store :metadata, accessors: [ :analyzed, :identified ], coder: ActiveRecord::Coders::JSON
 
-  class_attribute :service
+  class_attribute :service, instance_accessor: false
 
   has_many :attachments
 
